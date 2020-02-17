@@ -2,6 +2,7 @@ import { isNil } from '@nestjs/common/utils/shared.utils';
 
 export class KafkaParser {
   public static parse<T = any>(data: any): T {
+    data.initialValue = data.value;
     data.value = this.decode(data.value);
 
     if (!isNil(data.key)) {
